@@ -29,7 +29,7 @@ deltaT          1;
 
 writeControl    timeStep;
 
-writeInterval   50;
+writeInterval   25;
 
 purgeWrite      0;
 
@@ -44,13 +44,6 @@ timeFormat      general;
 timePrecision   6;
 
 runTimeModifiable true;
-
-functions
-{
-    #include "coordinateTransform"
-    #include "momentum"
-    #include "timeInfo"
-}
 
 
 // ************************************************************************* //
