@@ -4,7 +4,6 @@ cd "${0%/*}" || exit                                # Run from this directory
 #------------------------------------------------------------------------------
 
 runApplication blockMesh
-runApplication topoSet
 runApplication refineHexMesh c0 -overwrite
 
 restore0Dir
