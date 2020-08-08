@@ -10,48 +10,66 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    location    "system";
-    object      fvSchemes;
+    object      blockMeshDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-ddtSchemes
-{
-    default         Euler;
-}
+scale   1;
 
-gradSchemes
-{
-    default         Gauss linear;
-    grad(p)         Gauss linear;
-}
+vertices
+(
+    (0 0 0)
+    (10 0 0)
+    (10 5 0)
+    (0 5 0)
+    (0 0 10)
+    (10 0 10)
+    (10 5 10)
+    (0 5 10)
+);
 
-divSchemes
-{
-    default         none;
-    div(phi,U)      Gauss linearUpwind grad(U);
-    div(phi,T)      Gauss upwind;
-    div(phi,k)      Gauss upwind;
-    div(phi,epsilon) Gauss upwind;
-    div(phi,R)      Gauss upwind;
-    div(R)          Gauss linear;
-    div((nuEff*dev2(T(grad(U))))) Gauss linear;
-}
+blocks
+(
+    hex (0 1 2 3 4 5 6 7) (20 10 20) simpleGrading (1 1 1)
+);
 
-laplacianSchemes
-{
-    default         Gauss linear orthogonal;
-}
+edges
+(
+);
 
-interpolationSchemes
-{
-    default         linear;
-}
+boundary
+(
+    floor
+    {
+        type wall;
+        faces
+        (
+            (1 5 4 0)
+        );
+    }
+    ceiling
+    {
+        type wall;
+        faces
+        (
+            (3 7 6 2)
+        );
+    }
+    fixedWalls
+    {
+        type wall;
+        faces
+        (
+            (0 4 7 3)
+            (2 6 5 1)
+            (0 3 2 1)
+            (4 5 6 7)
+        );
+    }
+);
 
-snGradSchemes
-{
-    default         orthogonal;
-}
-
+mergePatchPairs
+(
+);
 
 // ************************************************************************* //

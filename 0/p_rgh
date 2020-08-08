@@ -9,53 +9,37 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    object      PDRblockMeshDict;
+    class       volScalarField;
+    object      p_rgh;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-scale   0.1;
+dimensions      [0 2 -2 0 0 0 0];
 
-x
+internalField   uniform 0;
+
+boundaryField
 {
-    points  (0 1);
-    nCells  (20);
-    ratios  (1);
-}
-
-y
-{
-    points  (0 1);
-    nCells  (20);
-    ratios  (1);
-}
-
-z
-{
-    points  (0 0.1);
-    nCells  (1);
-    ratios  (1);
-}
-
-
-boundary
-(
-    movingWall
+    inlet
     {
-        type  wall;
-        faces (3);
+        type            fixedFluxPressure;
+        rho             rhok;
+        value           uniform 0;
     }
-    fixedWalls
-    {
-        type  wall;
-        faces (0 1 2);
-    }
-    frontAndBack
-    {
-        type  empty;
-        faces (4 5);
-    }
-);
 
+    outlet
+    {
+        type            fixedFluxPressure;
+        rho             rhok;
+        value           uniform 0;
+    }
+
+    walls
+    {
+        type            fixedFluxPressure;
+        rho             rhok;
+        value           uniform 0;
+    }
+}
 
 // ************************************************************************* //

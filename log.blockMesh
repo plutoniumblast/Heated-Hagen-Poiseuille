@@ -1,0 +1,80 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _f3950763fe-20191219 OPENFOAM=1912
+Arch   : "LSB;label=32;scalar=64"
+Exec   : blockMesh
+Date   : Aug 08 2020
+Time   : 22:28:41
+Host   : 823dd91f70a2
+PID    : 386
+I/O    : uncollated
+Case   : /home/ofuser/workingDir/Documents/GitHub/Heated-Hagen-Poiseuille
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Creating block mesh from "system/blockMeshDict"
+--> FOAM IOWarning :
+    Found [v1012] 'convertToMeters' entry instead of 'scale' in dictionary "/home/ofuser/workingDir/Documents/GitHub/Heated-Hagen-Poiseuille/system/blockMeshDict" 
+
+    This keyword is deemed to be 108 months old.
+
+Creating block edges
+No non-planar block faces defined
+Creating topology blocks
+Creating topology patches
+
+Creating block mesh topology
+
+Check topology
+
+	Basic statistics
+		Number of internal faces : 0
+		Number of boundary faces : 6
+		Number of defined boundary faces : 6
+		Number of undefined boundary faces : 0
+	Checking patch -> block consistency
+
+Creating block offsets
+Creating merge list...
+Deleting polyMesh directory "constant/polyMesh"
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale 0.1
+    Block 0 cell size :
+        i : 0.00784591 .. 0.00784591
+        j : 0.00784591 .. 0.00784591
+        k : 0.08 .. 0.08
+
+
+There are no merge patch pairs
+
+Writing polyMesh with 0 cellZones
+----------------
+Mesh Information
+----------------
+  boundingBox: (0 -0.05 -0.05) (4 0.05 0.05)
+  nPoints: 6171
+  nCells: 5000
+  nFaces: 16100
+  nInternalFaces: 13900
+----------------
+Patches
+----------------
+  patch 0 (start: 13900 size: 100) name: inlet
+  patch 1 (start: 14000 size: 100) name: outlet
+  patch 2 (start: 14100 size: 2000) name: walls
+
+End
+

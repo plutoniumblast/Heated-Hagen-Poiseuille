@@ -10,27 +10,28 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    location    "constant";
-    object      transportProperties;
+    object      setFieldsDict;
 }
+
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-transportModel Newtonian;
+defaultFieldValues
+(
+    volScalarFieldValue T 373
+);
 
-// Laminar viscosity
-nu              1e-03;
+regions
+(
+    // Set patch values (using ==)
+    // boxToFace
+    // {
+    //     box (4.5 -1000 4.5) (5.5 1e-5 5.5);
 
-// Thermal expansion coefficient
-beta            3e-03;
-
-// Reference temperature
-TRef            273;
-
-// Laminar Prandtl number
-Pr              0.7;
-
-// Turbulent Prandtl number
-Prt             0.85;
-
+    //     fieldValues
+    //     (
+    //         volScalarFieldValue T 600
+    //     );
+    // }
+);
 
 // ************************************************************************* //
