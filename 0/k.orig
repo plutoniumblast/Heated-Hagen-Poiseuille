@@ -11,20 +11,22 @@ FoamFile
     format      ascii;
     class       volScalarField;
     location    "0";
-    object      epsilon;
+    object      k;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -3 0 0 0 0];
+dimensions      [0 2 -2 0 0 0 0];
 
-internalField   uniform 0.01;
+internalField   uniform 0;
+
+// Turbulet Kinteic Energy
 
 boundaryField
 {
     inlet
     {
         type            fixedValue;
-        value           uniform 0.01;
+        value           uniform 0;
     }
     outlet
     {
@@ -32,8 +34,8 @@ boundaryField
     }
     walls
     {
-        type            epsilonWallFunction;
-        value           uniform 0.01;
+        type            fixedValue;
+        value           uniform 0;
     }
 }
 
