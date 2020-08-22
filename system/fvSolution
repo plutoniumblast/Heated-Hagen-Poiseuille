@@ -56,6 +56,24 @@ PIMPLE
     pRefValue       0;
 }
 
+SIMPLE
+{
+    nOuterCorrectors 1;
+    nCorrectors     2;
+    nNonOrthogonalCorrectors 0;
+    pRefCell        0;
+    pRefValue       0;
+
+    residualControl
+    {
+        p_rgh           1e-2;
+        U               1e-4;
+        T               1e-2;
+        // possibly check turbulence fields
+        "(k|epsilon|omega)" 1e-5;
+    }
+}
+
 // relaxationFactors
 // {
 //     equations
