@@ -25,11 +25,11 @@ solvers
         relTol          0.01;
     }
 
-    p_rghFinal
-    {
-        $p_rgh;
-        relTol          0;
-    }
+    // p_rghFinal
+    // {
+    //     $p_rgh;
+    //     relTol          0;
+    // }
 
     "(U|T|k|epsilon|R)"
     {
@@ -39,11 +39,11 @@ solvers
         relTol          0.1;
     }
 
-    "(U|T|k|epsilon|R)Final"
-    {
-        $U;
-        relTol          0;
-    }
+    // "(U|T|k|epsilon|R)Final"
+    // {
+    //     $U;
+    //     relTol          0;
+    // }
 }
 
 PIMPLE
@@ -64,24 +64,24 @@ SIMPLE
     pRefCell        0;
     pRefValue       0;
 
-    residualControl
-    {
-        p_rgh           1e-2;
-        U               1e-4;
-        T               1e-2;
-        // possibly check turbulence fields
-        "(k|epsilon|omega)" 1e-5;
-    }
+    // residualControl
+    // {
+    //     p_rgh           1e-2;
+    //     U               1e-4;
+    //     T               1e-2;
+    //     // possibly check turbulence fields
+    //     "(k|epsilon|omega)" 1e-5;
+    // }
 }
 
-// relaxationFactors
-// {
-//     equations
-//     {
-//         "(U|T|k|epsilon|R)" 1;
-//         "(U|T|k|epsilon|R)Final" 1;
-//     }
-// }
+relaxationFactors
+{
+    equations
+    {
+        "(U|T|k|epsilon|R)" 1;
+        "(U|T|k|epsilon|R)Final" 1;
+    }
+}
 
 
 // ************************************************************************* //
