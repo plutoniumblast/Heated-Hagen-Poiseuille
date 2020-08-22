@@ -9,22 +9,23 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    location    "constant";
-    object      turbulenceProperties;
+    class       volVectorField;
+    object      U;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-simulationType laminar;
+dimensions      [0 1 -1 0 0 0 0];
 
-RAS
+internalField   uniform (1e-4 0 0);
+
+boundaryField
 {
-    RASModel        kEpsilon;
+    wall
+    {
+        type            noSlip;
+    }
 
-    turbulence      on;
-
-    printCoeffs     on;
+    #includeEtc "caseDicts/setConstraintTypes"
 }
-
 
 // ************************************************************************* //

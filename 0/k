@@ -11,15 +11,15 @@ FoamFile
     format      ascii;
     class       volScalarField;
     location    "0";
-    object      epsilon;
+    object      k;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -3 0 0 0 0];
+dimensions      [0 2 -2 0 0 0 0];
 
-internalField   uniform 0;
+internalField   uniform 1e-5;
 
-//  Turbulet KE Dissipation Rate
+// Turbulet Kinteic Energy
 
 boundaryField
 {
@@ -34,8 +34,8 @@ boundaryField
     }
     walls
     {
-        type            epsilonWallFunction;
-        value           uniform 0;
+        type            kqRWallFunction;
+        value           $internalField;
     }
 }
 
