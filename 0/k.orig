@@ -17,7 +17,7 @@ FoamFile
 
 dimensions      [0 2 -2 0 0 0 0];
 
-internalField   uniform 1e-5;
+internalField   uniform 0;
 
 // Turbulet Kinteic Energy
 
@@ -34,8 +34,8 @@ boundaryField
     }
     walls
     {
-        type            kqRWallFunction;
-        value           $internalField;
+        type            fixedValue;
+        value           uniform 0;
     }
 }
 
