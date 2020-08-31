@@ -33,15 +33,15 @@ vertices
     (0 0 $minZ)
     (0 $minY 0)
 
-    (40 0 $z)
-    (40 $y 0)
-    (40 0 $minZ)
-    (40 $minY 0)
+    (20 0 $z)
+    (20 $y 0)
+    (20 0 $minZ)
+    (20 $minY 0)
 );
 
 blocks
 (
-    hex (0 3 2 1 4 7 6 5) (10 10 50) simpleGrading (1 1 1)
+    hex (0 3 2 1 4 7 6 5) (15 15 75) simpleGrading (1 1 1)
 );
 
 edges
@@ -51,10 +51,10 @@ edges
     arc 2 3 (0 $minDiagRad $minDiagRad)
     arc 3 0 (0 $minDiagRad $diagRad)
 
-    arc 5 4 (40 $diagRad $diagRad)
-    arc 6 5 (40 $diagRad $minDiagRad)
-    arc 7 6 (40 $minDiagRad $minDiagRad)
-    arc 4 7 (40 $minDiagRad $diagRad)
+    arc 5 4 (20 $diagRad $diagRad)
+    arc 6 5 (20 $diagRad $minDiagRad)
+    arc 7 6 (20 $minDiagRad $minDiagRad)
+    arc 4 7 (20 $minDiagRad $diagRad)
 );
 
 boundary
