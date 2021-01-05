@@ -4,7 +4,6 @@ cd "${0%/*}" || exit                                # Run from this directory
 #------------------------------------------------------------------------------
 
 runApplication blockMesh
-\cp 0/T.orig 0/T
 runApplication setFields
 runApplication $(getApplication)
 

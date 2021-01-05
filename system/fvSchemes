@@ -23,20 +23,11 @@ ddtSchemes
 gradSchemes
 {
     default         Gauss linear;
-    grad(p)         Gauss linear;
 }
 
 divSchemes
 {
-    default         none;
-    // div(phi,U)      Gauss linearUpwind grad(U);
-    div(phi,U)      Gauss linear;
-    div(phi,T)      Gauss linear;
-    // div(phi,k)      Gauss upwind;
-    // div(phi,epsilon) Gauss upwind;
-    div(phi,R)      Gauss linear;
-    div(R)          Gauss linear;
-    div((nuEff*dev2(T(grad(U))))) Gauss linear;
+    default      Gauss linear;
 }
 
 laplacianSchemes
