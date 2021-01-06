@@ -19,19 +19,19 @@ FoamFile
 transportModel Newtonian;
 
 // Laminar viscosity
-nu              1e-02;
+nu              1.5e-06;
 
 // Thermal expansion coefficient
-beta            3e-03;
+beta            0;
 
 // Reference temperature
-TRef            273;
+TRef            277;
 
 // Laminar Prandtl number
-Pr              0.7;
+Pr              6.9;
 
 // Turbulent Prandtl number
-Prt             0.7;
+Prt             6.9;
 
 
 // ************************************************************************* //
