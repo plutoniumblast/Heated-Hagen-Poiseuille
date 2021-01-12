@@ -6,5 +6,6 @@ cd "${0%/*}" || exit                                # Run from this directory
 runApplication blockMesh
 runApplication setFields
 runApplication $(getApplication)
+runApplication paraFoam -touch-all
 
 #------------------------------------------------------------------------------
