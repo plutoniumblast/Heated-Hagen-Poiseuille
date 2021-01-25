@@ -34,7 +34,7 @@ boundaryField
     walls
     {
         type            fixedGradient;
-        gradient        uniform 373;
+        gradient        uniform 220;
     }
 }
 
