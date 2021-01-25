@@ -19,7 +19,7 @@ FoamFile
 transportModel Newtonian;
 
 // Laminar viscosity
-nu              1.5e-06;
+nu              8.9e-04;
 
 // Thermal expansion coefficient
 beta            0;

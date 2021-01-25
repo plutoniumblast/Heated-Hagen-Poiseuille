@@ -17,12 +17,14 @@ FoamFile
 
 simulationType laminar;
 
-RAS
-{
-    RASModel        laminar;
-    turbulence      off;
-    printCoeffs     off;
-}
+// RAS
+// {
+//     RASModel        laminar;
+
+//     turbulence      off;
+
+//     printCoeffs     on;
+// }
 
 
 // ************************************************************************* //

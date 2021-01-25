@@ -25,12 +25,6 @@ solvers
         relTol          0.01;
     }
 
-    p_rghFinal
-    {
-        $p_rgh;
-        relTol          0;
-    }
-
     "(U|T|k|epsilon|R)"
     {
         solver          PBiCGStab;
@@ -38,15 +32,9 @@ solvers
         tolerance       1e-6;
         relTol          0.1;
     }
-
-    "(U|T|k|epsilon|R)Final"
-    {
-        $U;
-        relTol          0;
-    }
 }
 
-PIMPLE
+SIMPLE
 {
     momentumPredictor no;
     nOuterCorrectors 1;
@@ -56,14 +44,14 @@ PIMPLE
     pRefValue       0;
 }
 
-// relaxationFactors
-// {
-//     equations
-//     {
-//         "(U|T|k|epsilon|R)" 1;
-//         "(U|T|k|epsilon|R)Final" 1;
-//     }
-// }
+relaxationFactors
+{
+    equations
+    {
+        "(U|T|k|epsilon|R)" 1;
+        "(U|T|k|epsilon|R)Final" 1;
+    }
+}
 
 
 // ************************************************************************* //
