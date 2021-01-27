@@ -23,14 +23,12 @@ boundaryField
 
     inlet
     {
-        type            fixedValue;
-        value           uniform (2 0 0);
+        type            zeroGradient;
     }
 
     outlet
     {
-        type            fixedValue;
-        value           uniform (2 0 0);
+        type            zeroGradient;
     }
 
     walls

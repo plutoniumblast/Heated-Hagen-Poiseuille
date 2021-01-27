@@ -14,47 +14,58 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-convertToMeters 0.1;
-
-radius 0.5;
-halfAngle 45.0;
-diagRad #eval{ $radius*sin(degToRad($halfAngle)) };
-minDiagRad #eval{ -1*$diagRad };
-
-y               0.5;
-minY            #eval{ -1*$y };
-z               0.5;
-minZ            #eval{ -1*$z };
+convertToMeters 0.001;
 
 vertices
 (
-    (0 0 $z)
-    (0 $y 0)
-    (0 0 $minZ)
-    (0 $minY 0)
-
-    (20 0 $z)
-    (20 $y 0)
-    (20 0 $minZ)
-    (20 $minY 0)
+    (0 0 0)		// vertex 0
+    (0.15 0.15 0)	// vertex 1
+    (-0.15 0.15 0)	// vertex 2
+    (-0.15 -0.15 0)	// vertex 3
+    (0.15 -0.15 0)	// vertex 4
+    (0.3535 0.3535 0)	// vertex 5
+    (-0.3535 0.3535 0)	// vertex 6
+    (-0.3535 -0.3535 0)	// vertex 7
+    (0.3535 -0.3535 0)	// vertex 8
+    (0.15 0.15 30)	// vertex 9
+    (-0.15 0.15 30)	// vertex 10
+    (-0.15 -0.15 30)	// vertex 11
+    (0.15 -0.15 30)	// vertex 12
+    (0.3535 0.3535 30)	// vertex 13
+    (-0.3535 0.3535 30)	// vertex 14
+    (-0.3535 -0.3535 30)// vertex 15
+    (0.3535 -0.3535 30)	// vertex 16
+    (0 0 30)		// vertex 17
 );
 
 blocks
 (
-    hex (0 3 2 1 4 7 6 5) (15 15 75) simpleGrading (1 1 1)
+    hex (1 2 3 4 9 10 11 12) (8 8 80) simpleGrading (1 1 1)	// block 1
+    hex (1 5 6 2 9 13 14 10) (8 8 80) simpleGrading (1 1 1)	// block 2
+    hex (2 6 7 3 10 14 15 11) (8 8 80) simpleGrading (1 1 1)	// block 3
+    hex (3 7 8 4 11 15 16 12) (8 8 80) simpleGrading (1 1 1)	// block 4
+    hex (8 5 1 4 16 13 9 12) (8 8 80) simpleGrading (1 1 1)	// block 5
 );
 
 edges
 (
-    arc 0 1 (0 $diagRad $diagRad)
-    arc 1 2 (0 $diagRad $minDiagRad)
-    arc 2 3 (0 $minDiagRad $minDiagRad)
-    arc 3 0 (0 $minDiagRad $diagRad)
+    arc 5 6 (0 0.5 0)		// edge 1
+    arc 6 7 (-0.5 0 0)		// edge 2
+    arc 7 8 (0 -0.5 0)		// edge 3
+    arc 8 5 (0.5 0 0)		// edge 4
+    arc 1 2 (0 0.212132 0)	// edge 5
+    arc 2 3 (-0.212132 0 0)	// edge 6
+    arc 3 4 (0 -0.212132 0)	// edge 7
+    arc 4 1 (0.212132 0 0)	// edge 8
 
-    arc 5 4 (20 $diagRad $diagRad)
-    arc 6 5 (20 $diagRad $minDiagRad)
-    arc 7 6 (20 $minDiagRad $minDiagRad)
-    arc 4 7 (20 $minDiagRad $diagRad)
+    arc 13 14 (0 0.5 30)	// edge 9
+    arc 14 15 (-0.5 0 30)	// edge 10
+    arc 15 16 (0 -0.5 30)	// edge 11
+    arc 16 13 (0.5 0 30)	// edge 12
+    arc 9 10 (0 0.212132 30)	// edge 13
+    arc 10 11 (-0.212132 0 30)	// edge 14
+    arc 11 12 (0 -0.212132 30)	// edge 15
+    arc 12 9 (0.212132 0 30)	// edge 16
 );
 
 boundary
@@ -64,31 +75,40 @@ boundary
         type patch;
         faces
         (
-            (3 2 1 0)
+            (1 2 3 4)
+            (1 5 6 2)
+            (2 6 7 3)
+            (3 7 8 4)
+            (4 8 5 1)
         );
     }
-
     outlet
     {
         type patch;
         faces
         (
-            (4 5 6 7)
+            (9 10 11 12)
+            (9 10 14 13)
+            (10 11 15 14)
+            (11 12 16 15)
+            (12 9 13 16)
         );
     }
-
     walls
     {
         type wall;
         faces
         (
-            (1 5 4 0)
-            (2 6 5 1)
-            (3 7 6 2)
-            (0 4 7 3)
+            (13 14 6 5)
+            (14 15 7 6)
+            (15 16 8 7)
+            (16 13 5 8)
         );
     }
 );
+
+mergePatchPairs
+();
 
 
 // ************************************************************************* //
