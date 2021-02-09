@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  v1912                                 |
-|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|  \\    /   O peration     | Version:  5.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -19,44 +19,40 @@ solvers
 {
     p
     {
-        solver          PCG;
-        preconditioner  DIC;
-        tolerance       1e-2;
-        relTol          0.01;
+        solver          GAMG;
+        tolerance       1e-05;
+        relTol          0.1;
+        smoother        GaussSeidel;
     }
- //   p_rgh
-    //{
-    //    solver          PCG;
-    //    preconditioner  DIC;
-    //    tolerance       1e-2;
-    //    relTol          0.01;
-    //}
 
-    "(U|T|k|epsilon|R)"
+    "(U|k|epsilon|omega|f|v2)"
     {
-        solver          PBiCGStab;
-        preconditioner  DILU;
-        tolerance       1e-2;
-        relTol          0.01;
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-05;
+        relTol          0.1;
     }
 }
 
 SIMPLE
 {
-    momentumPredictor no;
-    nOuterCorrectors 1;
-    nCorrectors     2;
     nNonOrthogonalCorrectors 0;
-    pRefCell        0;
-    pRefValue       0;
+    consistent      yes;
+
+    residualControl
+    {
+        p               1e-4;
+        U               1e-4;
+        "(k|epsilon|omega|f|v2)" 1e-3;
+    }
 }
 
 relaxationFactors
 {
     equations
     {
-        "(U|T|k|epsilon|R)" 1;
-        "(U|T|k|epsilon|R)Final" 1;
+        U               0.9; // 0.9 is more stable but 0.95 more convergent
+        ".*"            0.9; // 0.9 is more stable but 0.95 more convergent
     }
 }
 

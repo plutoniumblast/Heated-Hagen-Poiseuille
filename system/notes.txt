@@ -1,0 +1,1 @@
+Check tutorial problem - openfoam (spoken tutorial)/ openfoam.com => Check mesh quality
