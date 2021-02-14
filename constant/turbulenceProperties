@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  v1912                                 |
-|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|  \\    /   O peration     | Version:  5.x                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -15,16 +15,19 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-simulationType laminar;
+simulationType laminar;//RAS;
 
-// RAS
-// {
-//     RASModel        laminar;
+/*
+RAS
+{
+    // Tested with kEpsilon, realizableKE, kOmega, kOmegaSST, v2f,
+    // ShihQuadraticKE, LienCubicKE.
+    RASModel        kEpsilon;
 
-//     turbulence      off;
+    turbulence      on;
 
-//     printCoeffs     on;
-// }
-
+    printCoeffs     on;
+}
+*/
 
 // ************************************************************************* //
