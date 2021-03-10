@@ -1,0 +1,141 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1812                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      snappyHexMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+castellatedMesh true;
+snap            true;
+addLayers       false;
+
+geometry
+{
+    LongCyl.stl
+    {
+        type triSurfaceMesh;
+    	name LongCyl.stl;	
+    }
+}
+
+castellatedMeshControls
+{
+    maxLocalCells 100000;
+
+
+    maxGlobalCells 2000000;
+    minRefinementCells 10;
+
+    maxLoadUnbalance 0.10;
+
+    nCellsBetweenLevels 3;
+
+    features
+    (
+    );
+
+    refinementSurfaces
+    {
+        LongCyl.stl
+	    {
+            level (0 2);
+        }
+    }
+
+    resolveFeatureAngle 30;
+
+
+
+    refinementRegions
+    {
+    }
+
+    locationInMesh (50.91234 0.123450001 10.123443);
+
+    allowFreeStandingZoneFaces true;
+}
+
+snapControls
+{
+    nSmoothPatch 3;
+
+    tolerance 2.0;
+
+    nSolveIter 30;
+
+    nRelaxIter 5;
+
+        nFeatureSnapIter 10;
+
+        implicitFeatureSnap true;
+        explicitFeatureSnap false;
+        multiRegionFeatureSnap false;
+}
+
+
+addLayersControls
+{
+    relativeSizes true;
+
+    layers
+    {
+        "(lowerWall|motorBike).*"
+        {
+            nSurfaceLayers 1;
+        }
+    }
+
+    expansionRatio 1.0;
+    finalLayerThickness 0.3;
+
+    minThickness 0.1;
+
+    nGrow 0;
+
+
+    featureAngle 60;
+    slipFeatureAngle 30;
+
+    nRelaxIter 3;
+
+    nSmoothSurfaceNormals 1;
+
+    nSmoothNormals 3;
+
+    nSmoothThickness 10;
+
+    maxFaceThicknessRatio 0.5;
+    maxThicknessToMedialRatio 0.3;
+
+
+    minMedialAxisAngle 90;
+    nBufferCellsNoExtrude 0;
+
+
+    nLayerIter 50;
+}
+
+meshQualityControls
+{
+    #include "meshQualityDict"
+
+    nSmoothScale 4;
+    errorReduction 0.75;
+}
+
+writeFlags
+(
+    scalarLevels
+    layerSets
+    layerFields     // write volScalarField for layer coverage
+);
+
+mergeTolerance 1e-6;
