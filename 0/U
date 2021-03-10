@@ -32,9 +32,24 @@ boundaryField
         type            zeroGradient;
     }
 
-    walls
+    wall
     {
         type            noSlip;
+    }
+
+    front
+    {
+        type wedge;
+    }
+
+    back
+    {
+        type wedge;
+    }
+    
+    axis
+    {
+        type symmetry;
     }
 }
 

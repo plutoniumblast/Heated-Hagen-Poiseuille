@@ -34,9 +34,24 @@ boundaryField
         value           uniform 0;
     }
 
-    walls
+    wall
     {
         type            zeroGradient;
+    }
+
+    front
+    {
+        type wedge;
+    }
+    
+    back
+    {
+        type wedge;
+    }
+
+    axis
+    {
+        type symmetry;
     }
 }
 
