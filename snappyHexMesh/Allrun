@@ -3,5 +3,6 @@ snappyHexMesh -overwrite > snappyHexMesh.log   #i run snappyHexMesh in overwrite
 topoSet > topoSet.log
 createPatch -overwrite > createPatch.log
 
+#this is to run icoFoam in background
 icoFoam > icoFoam.log & 
-paraFoam -touch-all
+touch pipeflow.foam
