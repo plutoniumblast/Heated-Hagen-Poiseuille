@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  v1906                                 |
-|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -15,25 +15,14 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-3
+1
 (
-    wall
+    simple_cylinder_Trial.stl
     {
-        type            patch;
-        nFaces          14560;
-        startFace       715352;
-    }
-    inlet
-    {
-        type            patch;
-        nFaces          9300;
-        startFace       729912;
-    }
-    outlet
-    {
-        type            patch;
-        nFaces          9325;
-        startFace       739212;
+        type            wall;
+        inGroups        1(wall);
+        nFaces          46107;
+        startFace       1933371;
     }
 )
 
