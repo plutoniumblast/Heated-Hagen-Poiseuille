@@ -17,9 +17,9 @@ FoamFile
 actions
 (
 
-// so here i want to make 3 parts of the patch. so i need to chisel out each section from the whole 
+// so here i want to make 3 parts of the patch. so i need to chisel out each section from the whole
 // set of boundary cells, so that's three templates i can chisel out of
-    
+
 // Firstly i take the basic patch and turn it into a set of faces.
     {
 	name 	fullCylinderSurface;
@@ -28,7 +28,7 @@ actions
 	source 	patchToFace;
 	sourceInfo
 	{
-	   name "simple_cylinder.stl";
+	   name "simple_cylinder_COPY.stl";
 	}
     }
 
@@ -43,7 +43,7 @@ actions
                 box (7.0e-1 -10.1 -0.1) (105.1 10.1 20.1);
         }
     }
-    
+
     {
         name    inletNegativeFace;
         type    faceSet;
@@ -79,7 +79,7 @@ actions
         sourceInfo
         {
 		set outletNegativeCell;
-		option	all; 
+		option	all;
 
         }
     }
@@ -93,7 +93,7 @@ actions
 	sourceInfo
 	{
 		set fullCylinderSurface;
-	}	
+	}
     }
 
     {

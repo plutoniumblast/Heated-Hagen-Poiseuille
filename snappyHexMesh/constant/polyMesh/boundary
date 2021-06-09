@@ -15,14 +15,25 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-1
+3
 (
-    simple_cylinder_Trial.stl
+    wall
     {
-        type            wall;
-        inGroups        1(wall);
-        nFaces          46107;
-        startFace       1933371;
+        type            patch;
+        nFaces          14560;
+        startFace       715352;
+    }
+    inlet
+    {
+        type            patch;
+        nFaces          9300;
+        startFace       729912;
+    }
+    outlet
+    {
+        type            patch;
+        nFaces          9325;
+        startFace       739212;
     }
 )
 

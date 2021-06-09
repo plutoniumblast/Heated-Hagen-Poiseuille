@@ -3,5 +3,9 @@ snappyHexMesh -overwrite > snappyHexMesh.log
 topoSet > topoSet.log
 createPatch -overwrite > createPatch.log
 
-icoFoam > icoFoam.log & 
+icoFoam > icoFoam.log
 touch pipeflow.foam
+
+combined
+blockMesh && snappyHexMesh -overwrite
+topoSet && createPatch -overwrite
